@@ -6,4 +6,6 @@ public interface ProductService {
 
     Long createProduct(ProductDto productDto);
 
+    ProductDto editProduct(ProductDto productDto, long id);
+
 }
