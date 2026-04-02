@@ -9,6 +9,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class ProductServiceImpl implements ProductService {
@@ -25,6 +27,13 @@ public class ProductServiceImpl implements ProductService {
         modelMapper.map(productDto,product);
         productRepository.save(product);
         return product.getProductId();
+
+    }
+
+    @Override
+    public List<Product> getAllProducts() {
+        List<Product> productList = productRepository.findAll();
+        return productList;
 
     }
 
