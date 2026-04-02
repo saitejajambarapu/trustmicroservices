@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="2c647d30-e2fe-43e2-8fdf-57b7b6c66e43" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+=======
+    <list default="true" id="ba15cece-f591-4789-8b71-8056d980f966" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+>>>>>>> 97c3067e63c0ad6ddc9f6d3a347bb5f2c4e29402
       <change beforePath="$PROJECT_DIR$/product/src/main/java/com/trust/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/product/src/main/java/com/trust/controller/ProductController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/product/src/main/java/com/trust/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/product/src/main/java/com/trust/service/ProductService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/product/src/main/java/com/trust/serviceimpl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/product/src/main/java/com/trust/serviceimpl/ProductServiceImpl.java" afterDir="false" />
@@ -22,15 +27,22 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
+<<<<<<< HEAD
   "associatedIndex": 0
 }]]></component>
   <component name="ProjectId" id="3BnmObE1fiKWJTmKxrilgM0XPtr" />
+=======
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="3Bnlep0EaWDIadeJqffwlXUo62H" />
+>>>>>>> 97c3067e63c0ad6ddc9f6d3a347bb5f2c4e29402
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+<<<<<<< HEAD
     "Application.product.executor": "Run",
     "Application.user.executor": "Run",
     "JUnit.ProductServiceTest.executor": "Run",
@@ -43,6 +55,19 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
+=======
+    "Application.ProductApplication.executor": "Run",
+    "Application.product.executor": "Run",
+    "Application.user.executor": "Run",
+    "JUnit.ProductServiceTest.createProductTest.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+>>>>>>> 97c3067e63c0ad6ddc9f6d3a347bb5f2c4e29402
   }
 }]]></component>
   <component name="RunManager" selected="Application.product">
@@ -60,7 +85,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< HEAD
     <configuration name="ProductServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+=======
+    <configuration name="ProductServiceTest.createProductTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+>>>>>>> 97c3067e63c0ad6ddc9f6d3a347bb5f2c4e29402
       <module name="product" />
       <extension name="coverage">
         <pattern>
@@ -70,12 +99,18 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.trust.service" />
       <option name="MAIN_CLASS_NAME" value="com.trust.service.ProductServiceTest" />
+<<<<<<< HEAD
       <option name="TEST_OBJECT" value="class" />
+=======
+      <option name="METHOD_NAME" value="createProductTest" />
+      <option name="TEST_OBJECT" value="method" />
+>>>>>>> 97c3067e63c0ad6ddc9f6d3a347bb5f2c4e29402
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
+<<<<<<< HEAD
       <item itemvalue="Application.product" />
       <item itemvalue="Application.user" />
       <item itemvalue="JUnit.ProductServiceTest" />
@@ -83,11 +118,21 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.ProductServiceTest" />
+=======
+      <item itemvalue="Application.user" />
+      <item itemvalue="Application.product" />
+      <item itemvalue="JUnit.ProductServiceTest.createProductTest" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ProductServiceTest.createProductTest" />
+>>>>>>> 97c3067e63c0ad6ddc9f6d3a347bb5f2c4e29402
       </list>
     </recent_temporary>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
       <changelist id="2c647d30-e2fe-43e2-8fdf-57b7b6c66e43" name="Changes" comment="" />
       <created>1775133177156</created>
       <option name="number" value="Default" />
@@ -111,4 +156,14 @@
       </breakpoints>
     </breakpoint-manager>
   </component>
+=======
+      <changelist id="ba15cece-f591-4789-8b71-8056d980f966" name="Changes" comment="" />
+      <created>1775132818038</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1775132818038</updated>
+    </task>
+    <servers />
+  </component>
+>>>>>>> 97c3067e63c0ad6ddc9f6d3a347bb5f2c4e29402
 </project>
