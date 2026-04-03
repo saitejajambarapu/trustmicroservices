@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -34,6 +35,19 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> getAllProducts() {
         List<Product> productList = productRepository.findAll();
         return productList;
+
+    }
+
+    @Override
+    public ProductDto editProduct(ProductDto productDto, long id) {
+        Optional<Product> product = productRepository.findById(id);
+        ProductDto modifiedProduct = new ProductDto();
+        if(product!=null){
+            modelMapper.map(productDto,product.get());
+            productRepository.save(product.get());
+            modelMapper.map(product.get(),modifiedProduct);
+        }
+        return modifiedProduct;
 
     }
 

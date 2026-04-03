@@ -26,6 +26,11 @@ public class ProductController {
 
         return productService.getAllProducts();
     }
+
+    @PutMapping("/edit/{id}")
+    public ResponseEntity<ProductDto> editProduct(@RequestBody ProductDto productDto,@PathVariable("id") Long id){
+        return new ResponseEntity<>(productService.editProduct(productDto, id), HttpStatusCode.valueOf(200));
+    }
 }
 
 
