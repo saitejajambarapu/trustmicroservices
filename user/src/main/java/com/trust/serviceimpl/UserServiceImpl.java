@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -31,5 +32,10 @@ public class UserServiceImpl implements UserService {
         userEntity.setLastLogInOn(new Timestamp(System.currentTimeMillis()));
         userEntity = userRepo.save(userEntity);
         return "Account created Successfully with id : "+ userEntity.getUserId();
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return userRepo.findAll();
     }
 }

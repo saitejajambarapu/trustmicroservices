@@ -1,6 +1,8 @@
 package com.trust.serviceimpl;
 
+import com.trust.clients.UserClient;
 import com.trust.dto.ProductDto;
+import com.trust.dto.UserDto;
 import com.trust.entity.Product;
 import com.trust.repository.ProductRepository;
 import com.trust.service.ProductService;
@@ -19,6 +21,8 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ModelMapper modelMapper;
 
+    private final UserClient userClient;
+
     private final ProductRepository productRepository;
 
     @Override
@@ -36,6 +40,11 @@ public class ProductServiceImpl implements ProductService {
         List<Product> productList = productRepository.findAll();
         return productList;
 
+    }
+
+    @Override
+    public List<UserDto> getUsers() {
+        return userClient.getUsers();
     }
 
     @Override

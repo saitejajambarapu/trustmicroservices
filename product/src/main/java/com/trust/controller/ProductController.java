@@ -1,6 +1,7 @@
 package com.trust.controller;
 
 import com.trust.dto.ProductDto;
+import com.trust.dto.UserDto;
 import com.trust.entity.Product;
 import com.trust.service.ProductService;
 import lombok.AllArgsConstructor;
@@ -30,6 +31,11 @@ public class ProductController {
     @PutMapping("/edit/{id}")
     public ResponseEntity<ProductDto> editProduct(@RequestBody ProductDto productDto,@PathVariable("id") Long id){
         return new ResponseEntity<>(productService.editProduct(productDto, id), HttpStatusCode.valueOf(200));
+    }
+
+    @GetMapping("/getUsers")
+    public List<UserDto> getUsers(){
+        return productService.getUsers();
     }
 }
 
