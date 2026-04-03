@@ -36,5 +36,7 @@ public class Product {
 
     private String Specifications;
 
+    private Long userId;
+
 
 }
