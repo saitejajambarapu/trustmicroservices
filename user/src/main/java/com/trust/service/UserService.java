@@ -10,4 +10,6 @@ public interface UserService {
     String createUser(UserDto user);
 
     List<User> getAllUsers();
+
+    User getUserById(Long id);
 }

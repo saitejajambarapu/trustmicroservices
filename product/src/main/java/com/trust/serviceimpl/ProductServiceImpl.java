@@ -1,5 +1,6 @@
 package com.trust.serviceimpl;
 
+import com.trust.Exception.ResourceNotFoundException;
 import com.trust.clients.UserClient;
 import com.trust.dto.ProductDto;
 import com.trust.dto.UserDto;
@@ -27,7 +28,13 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Long createProduct(ProductDto productDto) {
-
+        Long id  = productDto.getUserId();
+        UserDto userDto = userClient.getUserById(id);
+        if(userDto == null) try {
+            throw new ResourceNotFoundException("User With User Id :"+id+  " not found");
+        } catch (ResourceNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         Product product = new Product();
         modelMapper.map(productDto,product);
         productRepository.save(product);

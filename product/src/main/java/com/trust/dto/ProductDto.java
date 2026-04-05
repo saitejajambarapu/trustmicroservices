@@ -27,4 +27,6 @@ public class ProductDto {
     private String Description;
 
     private String Specifications;
+
+    private Long userId;
 }
