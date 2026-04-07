@@ -15,4 +15,6 @@ public interface UserClient {
 
     @GetMapping("/getUserById")
     public UserDto getUserById(@RequestParam Long id);
+    @GetMapping("/getUsersById")
+    public List<UserDto> getUsers(@RequestParam List<Long> id);
 }

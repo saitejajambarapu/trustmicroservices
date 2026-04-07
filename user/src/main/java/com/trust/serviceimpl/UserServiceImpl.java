@@ -46,4 +46,10 @@ public class UserServiceImpl implements UserService {
         if(user.isEmpty()) return null;
         return user.get();
     }
+
+    @Override
+    public List<User> getUsersById(List<Long> id) {
+        Optional<List<User>> users=userRepo.findAllById(id);
+        return  users.get();
+    }
 }

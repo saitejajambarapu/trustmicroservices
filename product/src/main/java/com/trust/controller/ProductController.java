@@ -1,6 +1,7 @@
 package com.trust.controller;
 
 import com.trust.dto.ProductDto;
+import com.trust.dto.ProductUserDetailsDto;
 import com.trust.dto.UserDto;
 import com.trust.entity.Product;
 import com.trust.service.ProductService;
@@ -17,6 +18,7 @@ import java.util.List;
 public class ProductController {
 
     private ProductService productService;
+
 
     @PostMapping("/create")
     public ResponseEntity<Long> createProduct(@RequestBody ProductDto productDto){
@@ -41,6 +43,17 @@ public class ProductController {
     @GetMapping("/getUsers")
     public List<UserDto> getUsers(){
         return productService.getUsers();
+    }
+
+    @PostMapping("/buyProduct/{productId}/{buyerId}")
+    public Boolean buyProduct(@PathVariable Long productId, @PathVariable Long buyerId){
+        return productService.buyProduct(productId,buyerId);
+    }
+
+    @GetMapping("/productInfo/{productId}")
+    public ProductUserDetailsDto productInfo(@PathVariable Long productId){
+        ProductUserDetailsDto productUserDetailsDto=productService.productInfo(productId);
+        return productUserDetailsDto;
     }
 }
 

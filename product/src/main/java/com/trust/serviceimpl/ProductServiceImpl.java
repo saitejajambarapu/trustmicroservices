@@ -2,10 +2,10 @@ package com.trust.serviceimpl;
 
 import com.trust.Exception.ResourceNotFoundException;
 import com.trust.clients.UserClient;
-import com.trust.dto.HomePageDto;
-import com.trust.dto.ProductDto;
-import com.trust.dto.UserDto;
+import com.trust.dto.*;
 import com.trust.entity.Product;
+import com.trust.entity.ProductBuyerRelation;
+import com.trust.repository.ProductBuyerRelationRepository;
 import com.trust.repository.ProductRepository;
 import com.trust.service.ProductService;
 import lombok.AllArgsConstructor;
@@ -13,6 +13,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +29,7 @@ public class ProductServiceImpl implements ProductService {
     private final UserClient userClient;
 
     private final ProductRepository productRepository;
+    private final ProductBuyerRelationRepository productBuyerRelationRepository;
 
     @Override
     public Long createProduct(ProductDto productDto) {
@@ -63,6 +67,52 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<UserDto> getUsers() {
         return userClient.getUsers();
+    }
+
+    @Override
+    public Boolean buyProduct(Long productId, Long buyerId) {
+        Optional<Product> product = productRepository.findById(productId);
+        UserDto buyer=userClient.getUserById(buyerId);
+        if(!product.isEmpty() && buyer!=null){
+            ProductBuyerRelation productBuyerRelation=new ProductBuyerRelation();
+            productBuyerRelation.setBuyerId(buyerId);
+            productBuyerRelation.setProductId(productId);
+            productBuyerRelation.setActive(true);
+            productBuyerRelation.setCreatedOn(Timestamp.valueOf(LocalDateTime.now()));
+            productBuyerRelationRepository.save(productBuyerRelation);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public ProductUserDetailsDto productInfo(Long productId) {
+        Optional<List<ProductBuyerRelation>> productBuyerRelation = productBuyerRelationRepository.findByProductId(productId);
+        Optional<Product> productDetails = productRepository.findById(productId);
+        List<Long> buyerIds= new ArrayList<>();
+        for(ProductBuyerRelation p : productBuyerRelation.get()){
+            buyerIds.add(p.getBuyerId());
+        }
+        List<UserDto> buyerDetails = userClient.getUsers(buyerIds);
+        UserDto sellerDetails = userClient.getUserById(productDetails.get().getUserId());
+
+        ProductUserDetailsDto productUserDetailsDto = new ProductUserDetailsDto();
+        if (!productBuyerRelation.isEmpty() && !productDetails.isEmpty() && buyerDetails != null && sellerDetails != null) {
+            productUserDetailsDto.setProductId(productId);
+            productUserDetailsDto.setProductName(productDetails.get().getProductName());
+            productUserDetailsDto.setSellerId(sellerDetails.getUserId());
+            productUserDetailsDto.setSellerName(sellerDetails.getUserName());
+            List<BuyerDto> buyersList = new ArrayList<>();
+            for(UserDto buyer: buyerDetails){
+                BuyerDto buyerDto = new BuyerDto();
+                buyerDto.setBuyerId(buyer.getUserId());
+                buyerDto.setBuyerName(buyer.getUserName());
+//                buyerDto.setBoughtRequest(productBuyerRelation.get().getCreatedOn());
+                buyersList.add(buyerDto);
+            }
+            productUserDetailsDto.setBuyers(buyersList);
+        }
+        return productUserDetailsDto;
     }
 
 

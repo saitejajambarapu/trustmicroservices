@@ -2,6 +2,7 @@ package com.trust.service;
 
 import com.trust.dto.HomePageDto;
 import com.trust.dto.ProductDto;
+import com.trust.dto.ProductUserDetailsDto;
 import com.trust.dto.UserDto;
 import com.trust.entity.Product;
 
@@ -17,5 +18,8 @@ public interface ProductService {
 
     List<UserDto> getUsers();
 
+    Boolean buyProduct(Long productId, Long buyerId);
+
+    ProductUserDetailsDto productInfo(Long productId);
 
 }

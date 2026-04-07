@@ -30,4 +30,10 @@ public class UserController {
     public User getUser(@RequestParam Long id){
         return userService.getUserById(id);
     }
+
+    @GetMapping("/getUsersById")
+    public List<User> getUsers(@RequestParam List<Long> id){
+        return userService.getUsersById(id);
+    }
+
 }
