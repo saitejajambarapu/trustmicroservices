@@ -28,6 +28,11 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
+    @GetMapping("/{id}")
+    public ProductDto getProductById(@PathVariable Long id){
+        return productService.getProductById(id);
+    }
+
     @PutMapping("/edit/{id}")
     public ResponseEntity<ProductDto> editProduct(@RequestBody ProductDto productDto,@PathVariable("id") Long id){
         return new ResponseEntity<>(productService.editProduct(productDto, id), HttpStatusCode.valueOf(200));

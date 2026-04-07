@@ -29,6 +29,7 @@ public class Product {
 
     private Boolean isActive;
 
+    @Enumerated(EnumType.STRING)
     private ProductHealth productCondition;
 
     @Column(length = 250)

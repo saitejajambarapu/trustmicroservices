@@ -5,5 +5,7 @@ public enum ProductHealth {
     GOOD,
     ACCEPTABLE,
     POOR,
-    DAMAGED
+    DAMAGED,
+    NEW,
+    FAIR
 }

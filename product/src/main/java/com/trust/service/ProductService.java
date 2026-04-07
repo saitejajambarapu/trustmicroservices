@@ -1,5 +1,6 @@
 package com.trust.service;
 
+import com.trust.dto.HomePageDto;
 import com.trust.dto.ProductDto;
 import com.trust.dto.UserDto;
 import com.trust.entity.Product;
@@ -12,5 +13,9 @@ public interface ProductService {
     Long createProduct(ProductDto productDto);
     List<Product> getAllProducts();
 
+    ProductDto getProductById(Long id);
+
     List<UserDto> getUsers();
+
+
 }

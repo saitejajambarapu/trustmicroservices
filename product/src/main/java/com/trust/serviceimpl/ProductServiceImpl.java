@@ -2,6 +2,7 @@ package com.trust.serviceimpl;
 
 import com.trust.Exception.ResourceNotFoundException;
 import com.trust.clients.UserClient;
+import com.trust.dto.HomePageDto;
 import com.trust.dto.ProductDto;
 import com.trust.dto.UserDto;
 import com.trust.entity.Product;
@@ -50,9 +51,20 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public ProductDto getProductById(Long id) {
+
+        Optional<Product> product = productRepository.findById(id);
+
+        ProductDto productDto = modelMapper.map(product.get(),ProductDto.class);
+
+        return productDto;
+    }
+
+    @Override
     public List<UserDto> getUsers() {
         return userClient.getUsers();
     }
+
 
     @Override
     public ProductDto editProduct(ProductDto productDto, long id) {
@@ -66,6 +78,8 @@ public class ProductServiceImpl implements ProductService {
         return modifiedProduct;
 
     }
+
+
 
 
 }
