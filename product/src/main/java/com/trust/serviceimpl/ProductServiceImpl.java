@@ -107,7 +107,10 @@ public class ProductServiceImpl implements ProductService {
                 BuyerDto buyerDto = new BuyerDto();
                 buyerDto.setBuyerId(buyer.getUserId());
                 buyerDto.setBuyerName(buyer.getUserName());
-//                buyerDto.setBoughtRequest(productBuyerRelation.get().getCreatedOn());
+                for(ProductBuyerRelation pbr : productBuyerRelation.get()){
+                    if(buyer.getUserId()==pbr.getBuyerId())
+                        buyerDto.setBoughtRequest(pbr.getCreatedOn());
+                }
                 buyersList.add(buyerDto);
             }
             productUserDetailsDto.setBuyers(buyersList);
