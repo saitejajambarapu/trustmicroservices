@@ -14,4 +14,6 @@ public interface UserService {
     User getUserById(Long id);
 
     List<User> getUsersById(List<Long> id);
+
+    Boolean deleteUser (Long userId, String password);
 }

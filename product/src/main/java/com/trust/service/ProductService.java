@@ -22,4 +22,6 @@ public interface ProductService {
 
     ProductUserDetailsDto productInfo(Long productId);
 
+    Boolean productDelete (Long productID,Long userId);
+
 }

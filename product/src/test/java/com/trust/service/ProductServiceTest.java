@@ -29,6 +29,7 @@ public class ProductServiceTest {
         dto.setProductCondition(ProductHealth.GOOD);
         dto.setDescription("Well maintained, minor scratches");
         dto.setSpecifications("128GB, Blue, Battery 90%");
+        dto.setUserId(1L);
         System.out.println("the product Id is : "+ productService.createProduct(dto));
     }
 }

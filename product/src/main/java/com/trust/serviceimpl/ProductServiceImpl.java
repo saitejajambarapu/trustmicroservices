@@ -118,6 +118,20 @@ public class ProductServiceImpl implements ProductService {
         return productUserDetailsDto;
     }
 
+    @Override
+    public Boolean productDelete(Long productID,Long userId) {
+        Optional<Product> product =productRepository.findById(productID);
+        if(!product.isEmpty()){
+            if (product.get().getUserId()==userId) {
+                product.get().setIsActive(false);
+                productRepository.save(product.get());
+                return true;
+            }
+        }
+        return false;
+
+    }
+
 
     @Override
     public ProductDto editProduct(ProductDto productDto, long id) {

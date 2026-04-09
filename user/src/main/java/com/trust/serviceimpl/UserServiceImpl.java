@@ -52,4 +52,15 @@ public class UserServiceImpl implements UserService {
         Optional<List<User>> users=userRepo.findAllById(id);
         return  users.get();
     }
+
+    @Override
+    public Boolean deleteUser(Long userId, String password) {
+        Optional<User> userDelete = userRepo.findById(userId);
+        if (!userDelete.isEmpty() && password.equals(userDelete.get().getPassword())){
+            userDelete.get().setActive(false);
+            userRepo.save(userDelete.get());
+            return true;
+        }
+        return false;
+    }
 }

@@ -55,6 +55,11 @@ public class ProductController {
         ProductUserDetailsDto productUserDetailsDto=productService.productInfo(productId);
         return productUserDetailsDto;
     }
+
+    @DeleteMapping("/deleteProduct/{productId}/{userId}")
+    public Boolean productDelete (@PathVariable Long productId, @PathVariable Long userId){
+        return productService.productDelete(productId,userId);
+    }
 }
 
 
