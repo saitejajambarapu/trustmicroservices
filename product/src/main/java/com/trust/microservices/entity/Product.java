@@ -1,0 +1,44 @@
+package com.trust.microservices.entity;
+
+import com.trust.microservices.enums.ProductHealth;
+import jakarta.persistence.*;
+import lombok.Data;
+
+import java.sql.Date;
+
+@Entity
+@Table(name = "Product")
+@Data
+public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long  productId;
+
+    private String productName;
+
+    private String type;
+
+    private Double price;
+
+    private Double marketValue;
+
+    private Date boughtDate;
+
+    private Double boughtPrice;
+
+    private Boolean isActive;
+
+    @Enumerated(EnumType.STRING)
+    private ProductHealth productCondition;
+
+    @Column(length = 250)
+    private String Description;
+
+    private String Specifications;
+
+
+    private Long userId;
+
+
+}
