@@ -18,9 +18,12 @@ public class EmailServiceImpl implements EmailService {
 
     private final ModelMapper modelMapper;
 
+    private final EmailSenderService emailSenderService;
+
     public void saveEmail(EmailDto emailDto) {
         EmailEntity emailEntity = modelMapper.map(emailDto, EmailEntity.class);
         emailRepository.save(emailEntity);
         log.info("saved in the database");
+        emailSenderService.sendEmail(emailDto.getToMail(),emailDto.getSubject(),emailDto.getMessage());
     }
 }
