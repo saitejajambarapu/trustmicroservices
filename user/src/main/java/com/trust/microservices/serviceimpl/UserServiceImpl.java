@@ -2,13 +2,16 @@ package com.trust.microservices.serviceimpl;
 
 import com.trust.microservices.dto.EmailKafkaDto;
 import com.trust.microservices.dto.UserDto;
-import com.trust.microservices.model.User;
+import com.trust.microservices.entity.User;
 import com.trust.microservices.repository.UserRepo;
 import com.trust.microservices.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -17,7 +20,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserDetailsService, UserService {
 
     private final UserRepo userRepo;
 
@@ -68,5 +71,10 @@ public class UserServiceImpl implements UserService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepo.findByUserName(username);
     }
 }

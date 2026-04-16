@@ -1,7 +1,7 @@
 package com.trust.microservices.service;
 
 import com.trust.microservices.dto.UserDto;
-import com.trust.microservices.model.User;
+import com.trust.microservices.entity.User;
 
 import java.util.List;
 

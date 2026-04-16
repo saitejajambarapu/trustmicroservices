@@ -1,7 +1,7 @@
 package com.trust.microservices.controller;
 
 import com.trust.microservices.dto.UserDto;
-import com.trust.microservices.model.User;
+import com.trust.microservices.entity.User;
 import com.trust.microservices.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
