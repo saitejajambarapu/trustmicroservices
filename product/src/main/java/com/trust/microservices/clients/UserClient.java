@@ -6,15 +6,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+//, url = "http://USER:8080/user"
 
-@FeignClient(name = "user", url = "http://localhost:8080/user")
+@FeignClient(name = "USER")
 public interface UserClient {
 
-    @GetMapping("/getUsers")
+    @GetMapping("/user/getUsers")
     public List<UserDto> getUsers();
 
-    @GetMapping("/getUserById")
+    @GetMapping("/user/getUserById")
     public UserDto getUserById(@RequestParam Long id);
-    @GetMapping("/getUsersById")
+
+    @GetMapping("/user/getUsersById")
     public List<UserDto> getUsers(@RequestParam List<Long> id);
 }

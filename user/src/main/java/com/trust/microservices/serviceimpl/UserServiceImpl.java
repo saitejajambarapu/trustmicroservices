@@ -6,6 +6,7 @@ import com.trust.microservices.entity.User;
 import com.trust.microservices.repository.UserRepo;
 import com.trust.microservices.service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -18,6 +19,7 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserDetailsService, UserService {
@@ -46,6 +48,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
     @Override
     public List<User> getAllUsers() {
+        log.info("in product user client method");
         return userRepo.findAll();
     }
 
@@ -74,7 +77,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepo.findByUserName(username);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return userRepo.findByEmail(email);
     }
 }

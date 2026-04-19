@@ -13,6 +13,7 @@ import com.trust.microservices.repository.ProductBuyerRelationRepository;
 import com.trust.microservices.repository.ProductRepository;
 import com.trust.microservices.service.ProductService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 @AllArgsConstructor
 public class ProductServiceImpl implements ProductService {
@@ -70,6 +72,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<UserDto> getUsers() {
+        log.info("into user client method from product");
         return userClient.getUsers();
     }
 
