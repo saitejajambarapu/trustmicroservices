@@ -8,20 +8,31 @@ spring:
     config:
       enabled: false
     gateway:
-      routes:
-        - id: PRODUCT
-          uri: lb://PRODUCT
-          predicates:
-            - Path=/api/v1/product/**
-          filters:
-            - StripPrefix=2
+      server:
+        webflux:                    # ✅ new key prefix
+          routes:
+            - id: PRODUCT
+              uri: lb://PRODUCT
+              predicates:
+                - Path=/api/v1/product/**
+              filters:
+                - StripPrefix=2
+                - name: AuthenticationGatewayFilter
+                  args:
+                     Enabled: true
+                     roles: User
+                - name: LoggingOrdersFilter
 
-        - id: USER
-          uri: lb://USER
-          predicates:
-            - Path=/api/v1/user/**
-          filters:
-            - StripPrefix=2
+            - id: USER
+              uri: lb://USER
+              predicates:
+                - Path=/api/v1/user/**
+              filters:
+                - StripPrefix=2
+                - name: AuthenticationGatewayFilter
+                  args:
+                    Enabled: true
+                    roles : User
 
 eureka:
   client:
@@ -29,3 +40,12 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+#  endpoint:
+#    gateway:
+#      enabled: true
